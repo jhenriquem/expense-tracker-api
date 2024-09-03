@@ -1,7 +1,6 @@
 {
-  "name": "server",
+  "name": "expenses-tracker-api",
   "version": "1.0.0",
-  "main": "index.js",
   "scripts": {
     "dev": "tsx watch ./config/server.ts",
     "build": "tsc",
