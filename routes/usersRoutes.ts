@@ -3,6 +3,8 @@ import specificUserRoute from "./specificUserRoutes";
 import validateData from "../middlewares/validateData";
 import checkUserAlreadyExists from "../middlewares/checkUserAlreadyExists";
 import registerController from "../controllers/registerController";
+import emailValidator from "../middlewares/emailValidator";
+import authController from "../controllers/authController";
 
 const usersRoute = Router()
 
@@ -10,9 +12,7 @@ const usersRoute = Router()
 usersRoute.post("/", validateData, checkUserAlreadyExists, registerController)
 
 // Route responsible for authenticating a user
-usersRoute.post("/auth", (req, res) => {
-  res.json(req.url)
-})
+usersRoute.post("/auth", validateData, emailValidator, authController)
 
 // Routes related to a specific user
 usersRoute.use("/:userId", specificUserRoute)

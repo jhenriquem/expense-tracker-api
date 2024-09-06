@@ -25,9 +25,11 @@ class Server {
   private routes() {
     this.app.use(this.paths.users, usersRoute);
   }
+
   private async DBconnection() {
     await ConnectionDB()
   }
+
   private middlewares() {
     this.app.use(morgan("dev"));
     this.app.use(cors());

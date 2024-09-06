@@ -21,7 +21,6 @@ export default async function checkUserAlreadyExists(req: Request, res: Response
       statusMessage: "Error in the middleware that checks if the user already exists",
       data: {
         errorMessage: err.message,
-        urlRequest: req.originalUrl,
       }
     })
 

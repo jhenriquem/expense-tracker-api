@@ -6,6 +6,19 @@ import userModel from "../models/userModel";
 export default async function registerController(req: Request, res: Response) {
   try {
     const { username, lastname, birth_day, email, password } = req.body
+    const Exist =
+      email &&
+        password &&
+        username &&
+        lastname &&
+        birth_day
+        ? true : false
+
+    if (!Exist) {
+      return res.status(400).json({
+        statusMessage: "Non-existent data"
+      })
+    }
 
     const passwordHash = await hash(`${password}`, 10)
     const idHash = await hash(`${username}`, 10)
@@ -36,7 +49,6 @@ export default async function registerController(req: Request, res: Response) {
       statusMessage: "Error when trying to register a new user",
       data: {
         errorMessage: err.message,
-        urlRequest: req.originalUrl,
       }
     })
   }
