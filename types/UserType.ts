@@ -1,5 +1,4 @@
 export interface UserI {
-  _id: String
   username: String
   lastname: String
   birth_day: Date

@@ -5,6 +5,9 @@ import expensesRoute from "./subroutes/expensesRoutes";
 
 const specificUserRoute = Router()
 
+specificUserRoute.get("/", (req, res) => {
+  res.json(req.originalUrl)
+})
 // Responsible for times related filters
 specificUserRoute.use("/filters/time", timeRoute)
 

@@ -21,11 +21,9 @@ export default async function registerController(req: Request, res: Response) {
     }
 
     const passwordHash = await hash(`${password}`, 10)
-    const idHash = await hash(`${username}`, 10)
     const registrationDate = new Date()
 
     const data: UserI = {
-      _id: idHash,
       username: username,
       lastname: lastname,
       birth_day: birth_day,
