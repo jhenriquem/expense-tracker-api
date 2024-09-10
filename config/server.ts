@@ -5,6 +5,7 @@ import cors from "cors";
 import limiter from "../middlewares/rateLimit";
 import usersRoute from "../routes/usersRoutes";
 import ConnectionDB from "./database";
+import apiKeyValidator from "../middlewares/apiKeyValidator";
 
 class Server {
   private port: string | number;
@@ -35,6 +36,7 @@ class Server {
     this.app.use(cors());
     this.app.use(express.json());
     this.app.use(limiter);
+    this.app.use(apiKeyValidator)
   }
 
   online() {
