@@ -1,6 +1,7 @@
 import { NextFunction, Request, Response } from "express";
 import userModel from "../models/userModel";
 import { JwtPayload, verify } from "jsonwebtoken";
+import { JsonWebKey } from "crypto";
 
 export default async function userAccountValidator(req: Request, res: Response, next: NextFunction) {
   try {
@@ -15,6 +16,7 @@ export default async function userAccountValidator(req: Request, res: Response, 
       }
       const isValid = await userModel.findOne({ _id: (decoded as JwtPayload).userId }) ? true : false
       if (isValid) {
+        req.body.userId = (decoded as JwtPayload).userId
         next()
       }
     })
