@@ -25,8 +25,7 @@ export default async function authController(req: Request, res: Response) {
 
     const token = sign(
       { userId: user?._id },
-      process.env.SECRET_KEY_JWT as string, { expiresIn: "1h" }
-    );
+      process.env.SECRET_KEY_JWT as string);
 
     return res.status(200).json({
       statusMessage: "Authenticated",
