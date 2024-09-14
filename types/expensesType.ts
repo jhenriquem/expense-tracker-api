@@ -1,5 +1,7 @@
-export interface basisUserExpensesI {
-  _id: String
+import mongoose from "mongoose"
+
+export interface expensesBaseI {
+  _id: mongoose.Types.ObjectId
   expenses: expensesI[]
 }
 
