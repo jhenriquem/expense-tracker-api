@@ -50,7 +50,6 @@ export default async function registerController(req: Request, res: Response) {
     if (!response.status) throw error(response.message);
   }
   catch (err: any) {
-    console.error(`Error when trying to register a new user -> ${err.message}`)
     return res.status(500).json({
       statusMessage: "Error when trying to register a new user",
       data: {

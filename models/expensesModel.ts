@@ -7,8 +7,6 @@ const expensesSchema = new Schema<expensesI>({
   category: String,
   value: Number,
   date: Date,
-}, {
-  _id: true,
 })
 
 const expensesBaseSchema = new Schema<expensesBaseI>({

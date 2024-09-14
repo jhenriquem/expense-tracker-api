@@ -12,7 +12,6 @@ export default async function apiKeyValidator(req: Request, res: Response, next:
     }
     next()
   } catch (err: any) {
-    console.log(`Error in the middleware responsible for validating the api key -> ${err.message}`)
     return res.status(500).json({
       statusMessage: "Error in the middleware responsible for validating the api key",
       data: {

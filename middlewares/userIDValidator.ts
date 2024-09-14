@@ -1,7 +1,6 @@
 import { NextFunction, Request, Response } from "express";
 import userModel from "../models/userModel";
 import { JwtPayload, verify } from "jsonwebtoken";
-import { JsonWebKey } from "crypto";
 
 export default async function userAccountValidator(req: Request, res: Response, next: NextFunction) {
   try {
@@ -23,7 +22,6 @@ export default async function userAccountValidator(req: Request, res: Response, 
 
   }
   catch (err: any) {
-    console.log(`Error in the middleware responsible for validating the user account ( api/users/account) -> ${err.message}`)
     return res.status(500).json({
       statusMessage: "Error in the middleware responsible for validating the user account ( api/users/account )",
       data: {

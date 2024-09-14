@@ -14,7 +14,6 @@ export default function validateData(req: Request, res: Response, next: NextFunc
     next()
   }
   catch (err: any) {
-    console.error(`Error in data verification middleware -> ${err.message}`)
     return res.status(500).json({
       statusMessage: "Error in data verification middleware",
       data: {

@@ -33,7 +33,6 @@ export default async function authController(req: Request, res: Response) {
     })
 
   } catch (err: any) {
-    console.error(`Error when trying to authenticate a user -> ${err.message}`)
     return res.status(500).json({
       statusMessage: "Error when trying to authenticate a user",
       data: {

@@ -17,7 +17,6 @@ export default async function emailValidator(req: Request, res: Response, next: 
     next()
   }
   catch (err: any) {
-    console.error(`Error in email validator middleware -> ${err.message}`)
     return res.status(500).json({
       statusMessage: "Error in emailm validator middleware",
       data: {
