@@ -1,6 +1,6 @@
 import { Schema, model } from "mongoose";
 
-import { expensesBaseI, expensesI } from "../types/expensesType";
+import { expensesI } from "../types/expensesType";
 const expensesSchema = new Schema<expensesI>({
   title: String,
   description: String,
@@ -9,11 +9,11 @@ const expensesSchema = new Schema<expensesI>({
   date: Date,
 })
 
-const expensesBaseSchema = new Schema<expensesBaseI>({
+const expensesBaseSchema = new Schema({
   _id: { type: Schema.Types.ObjectId, ref: 'User', required: true },
   expenses: [expensesSchema]
 })
 
-const expensesBaseModel = model<expensesBaseI>("Expenses", expensesBaseSchema)
+const expensesBaseModel = model("Expenses", expensesBaseSchema)
 export default expensesBaseModel
 

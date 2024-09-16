@@ -1,6 +1,9 @@
 import { Router } from "express";
 import expensesBaseModel from "../../models/expensesModel";
 import postController from "../../controllers/expensesControllers/postController";
+import putController from "../../controllers/expensesControllers/putController";
+import deleteController from "../../controllers/expensesControllers/deleteController";
+import categoryValidator from "../../middlewares/categoryValidator";
 
 const expensesRoute = Router()
 
@@ -12,11 +15,12 @@ expensesRoute.get("/", async (req, res) => {
 })
 
 // Route responsible for adding a new expense
-expensesRoute.post("/", postController)
+expensesRoute.post("/", categoryValidator, postController)
 
 // Route responsible for updating an expense
-expensesRoute.put("/",)
+expensesRoute.put("/", putController)
+
 // Route responsible for deleting an expense
-expensesRoute.delete("/",)
+expensesRoute.delete("/", deleteController)
 
 export default expensesRoute
