@@ -4,8 +4,13 @@ import { JwtPayload, verify } from "jsonwebtoken";
 
 export default async function userAccountValidator(req: Request, res: Response, next: NextFunction) {
   try {
-    const autheader = req.headers["authorization"]
-    const JWT = autheader?.split(" ")[2]
+    const JWT = req.headers["user-token"]
+
+    if (!JWT) {
+      return res.status(400).json({
+        statusMessage: "Non-existent user token"
+      })
+    }
 
     verify(`${JWT}`, `${process.env.SECRET_KEY_JWT}`, async (err, decoded) => {
       if (err) {
