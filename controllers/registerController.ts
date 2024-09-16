@@ -33,7 +33,16 @@ export default async function registerController(req: Request, res: Response) {
       credentials: {
         email: email,
         password: passwordHash
-      }
+      },
+      categories: [
+        "Groceries",
+        "Leisure",
+        "Electronics",
+        "Utilities",
+        "Clothing",
+        "Health",
+        "Others"
+      ]
     }
 
     const registeredUser = new userModel(data)

@@ -10,7 +10,8 @@ const userSchema = new Schema<UserI>({
   credentials: {
     email: String,
     password: String
-  }
+  },
+  categories: Array
 })
 const userModel = model<UserI>("User", userSchema)
 

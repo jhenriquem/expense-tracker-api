@@ -3,7 +3,8 @@ export interface UserI {
   lastname: String
   birth_day: Date
   registration_date: Date
-  credentials: authUserI
+  credentials: authUserI,
+  categories: String[]
 }
 
 export interface authUserI {
