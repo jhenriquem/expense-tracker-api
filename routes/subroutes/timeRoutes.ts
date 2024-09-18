@@ -4,7 +4,7 @@ import expensesBaseModel from "../../models/expensesModel"
 const timeRoute = Router()
 
 // Route responsible for returning expenses for a specific week
-timeRoute.get("/days/:start-:end", async (req, res) => {
+timeRoute.get("/days/:start.:end", async (req, res) => {
   try {
     const { userId } = req.body
     const start = new Date(req.params.start)
@@ -50,8 +50,28 @@ timeRoute.get("/month/:month", async (req, res) => {
 })
 
 // Route responsible for returning expenses for a specific year
-timeRoute.get("/year/:yyyy", (req, res) => {
-  res.json(req.url)
+timeRoute.get("/year/:year", async (req, res) => {
+  try {
+    const { userId } = req.body
+    const year = new Date(req.params.year).getFullYear()
+
+
+    const expensesBase = await expensesBaseModel.findById(userId)
+    console.log(year)
+    const expenses = expensesBase?.expenses.filter(expense => expense.date.getFullYear() === year)
+    return res.status(200).json({
+      statusmessage: "Success",
+      data: expenses
+    })
+
+  } catch (err: any) {
+    return res.status(500).json({
+      statusmessage: "Error when trying to return expenses with this date",
+      data: {
+        error: err.message
+      }
+    })
+  }
 })
 
 export default timeRoute
