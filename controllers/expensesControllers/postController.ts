@@ -21,12 +21,16 @@ export default async function postController(req: Request, res: Response) {
       })
     }
 
+    const dateOfCreation = new Date()
+    //Time Zone Correction
+    dateOfCreation.setMinutes(dateOfCreation.getMinutes() - dateOfCreation.getTimezoneOffset())
+
     const data: expensesI = {
       title: title,
       description: description,
       category: category,
       value: value,
-      date: new Date()
+      date: dateOfCreation
     }
 
     const expensesBase = await expensesBaseModel.findOne({ _id: userId })

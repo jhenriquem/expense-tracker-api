@@ -3,6 +3,7 @@ import timeRoute from "./subroutes/timeRoutes";
 import categoryRoute from "./subroutes/categoryRoutes";
 import expensesRoute from "./subroutes/expensesRoutes";
 import userModel from "../models/userModel";
+import expensesBaseModel from "../models/expensesModel";
 
 const accountRoute = Router()
 
@@ -11,7 +12,7 @@ accountRoute.get("/", async (req, res) => {
     const { userId } = req.body
     const userBase = await userModel.findOne({ _id: userId }, { credentials: 0, _id: 0, __v: 0 })
     return res.status(200).json({
-      statusMessage: "Success",
+      statusmessage: "Success",
       data: userBase
     })
   } catch (err: any) {
@@ -27,8 +28,25 @@ accountRoute.get("/", async (req, res) => {
 accountRoute.use("/filters/time", timeRoute)
 
 // Responsible for returning all expenses corresponding to a category
-accountRoute.use("/filters/category/:categoryName", (req, res) => {
-  res.json(req.url)
+accountRoute.use("/filters/category/:categoryName", async (req, res) => {
+  try {
+    const categoryName = req.params.categoryName
+    const { userId } = req.body
+
+    const expensesBase = await expensesBaseModel.findById(userId)
+    const expenses = expensesBase?.expenses.filter(expense => expense.category === categoryName)
+    return res.status(200).json({
+      statusmessage: "Success",
+      data: expenses
+    })
+  } catch (err: any) {
+    return res.status(500).json({
+      statusmessage: "Error when trying to return expenses with this category",
+      data: {
+        error: err.message
+      }
+    })
+  }
 })
 
 // Responsible for adding and returning the expenses
