@@ -39,6 +39,7 @@ export default async function postController(req: Request, res: Response) {
 
     return res.status(201).json({
       statusMessage: "Success adding a new expense",
+      data: expensesBase?.expenses.at(-1)
     })
 
   } catch (err: any) {

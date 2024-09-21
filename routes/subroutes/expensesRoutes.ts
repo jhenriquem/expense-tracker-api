@@ -9,9 +9,23 @@ const expensesRoute = Router()
 
 // Route responsible for returning all expenses
 expensesRoute.get("/", async (req, res) => {
-  const id = req.body.userId
-  const ress = await expensesBaseModel.findOne({ _id: id })
-  res.json(ress)
+  try {
+
+
+    const id = req.body.userId
+    const response = await expensesBaseModel.findOne({ _id: id })
+    return res.status(200).json({
+      statusMessage: "Success",
+      data: response
+    })
+  } catch (err: any) {
+    return res.status(500).json({
+      statusMessage: "Error when trying to return all expenses",
+      data: {
+        error: err.message
+      }
+    })
+  }
 })
 
 // Route responsible for adding a new expense
