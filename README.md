@@ -1,6 +1,8 @@
 <h1 align="center">💸 Expenses tracker API</h1> 
 Uma API para um aplicativo de rastreador de despesas, com um sistema de autenticação, usando jwt, e validação de credenciais, como email. Podemos registrar e autenticar um usuário, cada usuário pode criar, apagar, atualizar e ver suas despesas, podendo filtra-las por categoria e tempo.
 
+Me expirei em um projeto sugerido pelo [Roadmap.sh](https://roadmap.sh/) como diretriz para o processo de desenvolvimento: [Expense Tracker API.](https://roadmap.sh/projects/expense-tracker-api)
+
 ### 📋 Caracteristicas e funcionalidades
 
 - Uso de uma chave de api
