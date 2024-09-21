@@ -11,7 +11,7 @@ Uma API para um aplicativo de rastreador de despesas, com um sistema de autentic
 - Criar e apagar categorias
 - Filtrar as despesas por categoria ou tempo
 
-### Tecnologias e bibliotecas usadas 
+### ⚙️  Tecnologias e bibliotecas usadas 
 
 - JS/TS 
 - Nodejs
@@ -22,5 +22,24 @@ Uma API para um aplicativo de rastreador de despesas, com um sistema de autentic
 - [jsonwebtoken](https://www.npmjs.com/package/jsonwebtoken)
 - [morgan](https://expressjs.com/en/resources/middleware/morgan.html), logs de rotas
 
+### ❗ Algumas observações 
+
+- Ao criar um usuário, ele terá um conjunto de categorias, relacionadas as despesas, padrão
+
+
 ### 🚩 Endpoits 
-Todos os endpoints exigem um cabeçalho de autorização com a chave da API, como: Authorization: Basic <apikey>
+Todos os endpoints exigem um cabeçalho de autorização com a chave da API, como: `Authorization: Basic <apikey>`, caso essa chave não sejá passada a api retornará uma resposta igual a essa :
+
+
+```json
+{
+    "statusMessage": "Unauthorized"
+}
+```
+
+Todas as rotas começão com /api/users/ , sua documentação é divida em 4 partes :
+
+- [ ➕ 🔒 Endpoints relacionados a criação e autenticação de usuários ](./docs/Users_Endpoints.md)
+- [ 👤 Endpoints relacionados a um usuário ](./docs/Account_Endpoints.md)
+- [ 💲 Endpoints relacionados as despesas do usuário  ](./docs/Expenses_Endpoints.md)
+- [ ⌛ 🔖 Endpoints relacionados aos filtros das despesas ](./docs/Filters_Endpoints.md)
