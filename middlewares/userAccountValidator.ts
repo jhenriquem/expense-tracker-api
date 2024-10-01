@@ -8,14 +8,14 @@ export default async function userAccountValidator(req: Request, res: Response, 
 
     if (!JWT) {
       return res.status(400).json({
-        statusMessage: "Non-existent user token"
+        statusMessage: "Token de usuário inexistente"
       })
     }
 
     verify(`${JWT}`, `${process.env.SECRET_KEY_JWT}`, async (err, decoded) => {
       if (err) {
         return res.status(500).json({
-          statusMessage: "Error converting token"
+          statusMessage: "Erro na conversão ou token inválido"
         })
       }
       const isValid = await userModel.findOne({ _id: (decoded as JwtPayload).userId }) ? true : false
@@ -28,7 +28,7 @@ export default async function userAccountValidator(req: Request, res: Response, 
   }
   catch (err: any) {
     return res.status(500).json({
-      statusMessage: "Error in the middleware responsible for validating the user account ( api/users/account )",
+      statusMessage: "Erro na validação da conta do usuário",
       data: {
         errorMessage: err.message
       }

@@ -8,14 +8,14 @@ export default function validateData(req: Request, res: Response, next: NextFunc
 
     if (!isValid) {
       return res.status(400).json({
-        statusMessage: "Invalid data"
+        statusMessage: "Dados inválidos"
       })
     }
     next()
   }
   catch (err: any) {
     return res.status(500).json({
-      statusMessage: "Error in data verification middleware",
+      statusMessage: "Erro na verificação do dados",
       data: {
         errorMessage: err.message,
       }

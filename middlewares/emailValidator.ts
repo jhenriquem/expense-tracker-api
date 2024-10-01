@@ -11,14 +11,14 @@ export default async function emailValidator(req: Request, res: Response, next: 
 
     if (!validationRes.valid) {
       return res.status(400).json({
-        statusMessage: "Invalid email"
+        statusMessage: "E-mail inválido"
       })
     }
     next()
   }
   catch (err: any) {
     return res.status(500).json({
-      statusMessage: "Error in emailm validator middleware",
+      statusMessage: "Erro ao validar o e-mail",
       data: {
         errorMessage: err.message,
       }

@@ -7,7 +7,7 @@ Retorna todas as despesas
 Exemplo de resposta:
 ```json
 {
-    "statusMessage": "Success",
+    "statusMessage": "Sucesso",
     "data" : {
         "_id" : "",
         "expenses": []
@@ -27,7 +27,7 @@ Requer um corpo JSON com os seguintes campos:
  Exemplo de respostas:
 ```json
 {
-    "statusMessage": "Success adding a new expense",
+    "statusMessage": "Despesa adicionada",
     "data" : {
         "_id" :"",
         "title" : "",
@@ -41,7 +41,7 @@ Requer um corpo JSON com os seguintes campos:
 Caso a categoria passada não exista na lista de caretorias do usuário, será retornado essa resposta: 
 ```json
 { 
-    "statusMessage" : "Non-existent category"
+    "statusMessage" : "Categoria não correspondente com a base de dados do usuário"
 }
 ```
 
@@ -58,7 +58,7 @@ Requer um corpo JSON com os seguintes campos:
  Exemplo de respostas:
 ```json
 {
-    "statusMessage": "Success updating an expense",
+    "statusMessage": "Despesa atualizada",
 }
 ```
 
@@ -71,7 +71,7 @@ Requer um corpo JSON com os seguintes campos:
  Exemplo de resposta:
 ```json
 {
-    "statusMessage": "Success in deleting an expense",
+    "statusMessage": "Despesa excluida",
 }
 ```
 

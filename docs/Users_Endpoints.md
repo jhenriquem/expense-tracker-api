@@ -16,7 +16,7 @@ Requer um corpo JSON com os seguintes campos:
 
 ```json
 {
-    "statusMessage": "Successful",
+    "statusMessage": "Usuário cadastrado",
 }
 ```
 
@@ -31,14 +31,14 @@ Requer um corpo JSON com os seguintes campos:
  Exemplo de respostas:
 ```json
 {
-    "statusMessage": "Authenticated",
+    "statusMessage": "Autenticado",
     "token": "<token>" 
 }
 ```
 ou
 ```json
 {
-    "statusMessage": "Unauthenticated"
+    "statusMessage": "Não autenticado"
 }
 ```
 
@@ -46,21 +46,21 @@ ou
 
 ```json
 {
-    "statusMessage": "The user already exists",
+    "statusMessage": "Esse usuário já existe",
 }
 ```
 ```json
 {
-    "statusMessage": "Invalid data",
+    "statusMessage": "Dados inválidos",
 }
 ```
 ```json
 {
-    "statusMessage": "Invalid email",
+    "statusMessage": "E-mail inválido",
 }
 ```
 ```json
 {
-    "statusMessage": "Non-existent data",
+    "statusMessage": "Dados inexistentes",
 }
 ```

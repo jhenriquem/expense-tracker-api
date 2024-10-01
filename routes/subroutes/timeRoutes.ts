@@ -3,7 +3,6 @@ import expensesBaseModel from "../../models/expensesModel"
 
 const timeRoute = Router()
 
-// Route responsible for returning expenses for a specific week
 timeRoute.get("/days/:start.:end", async (req, res) => {
   try {
     const { userId } = req.body
@@ -13,12 +12,12 @@ timeRoute.get("/days/:start.:end", async (req, res) => {
     const expensesBase = await expensesBaseModel.findById(userId)
     const expenses = expensesBase?.expenses.filter(expense => expense.date >= start && expense.date <= end)
     return res.status(200).json({
-      statusmessage: "Success",
+      statusmessage: "Sucesso",
       data: expenses
     })
   } catch (err: any) {
     return res.status(500).json({
-      statusmessage: "Error when trying to return expenses with this date",
+      statusmessage: "Erro ao buscar despesas com essa data",
       data: {
         error: err.message
       }
@@ -26,7 +25,6 @@ timeRoute.get("/days/:start.:end", async (req, res) => {
   }
 })
 
-// Route responsible for returning expenses for a specific month
 timeRoute.get("/month/:month", async (req, res) => {
   try {
     const { userId } = req.body
@@ -35,13 +33,13 @@ timeRoute.get("/month/:month", async (req, res) => {
     const expensesBase = await expensesBaseModel.findById(userId)
     const expenses = expensesBase?.expenses.filter(expense => expense.date.getMonth() === month)
     return res.status(200).json({
-      statusmessage: "Success",
+      statusmessage: "Sucesso",
       data: expenses
     })
 
   } catch (err: any) {
     return res.status(500).json({
-      statusmessage: "Error when trying to return expenses with this date",
+      statusmessage: "Erro ao buscar despesas com essa data",
       data: {
         error: err.message
       }
@@ -49,7 +47,6 @@ timeRoute.get("/month/:month", async (req, res) => {
   }
 })
 
-// Route responsible for returning expenses for a specific year
 timeRoute.get("/year/:year", async (req, res) => {
   try {
     const { userId } = req.body
@@ -60,13 +57,13 @@ timeRoute.get("/year/:year", async (req, res) => {
     console.log(year)
     const expenses = expensesBase?.expenses.filter(expense => expense.date.getFullYear() === year)
     return res.status(200).json({
-      statusmessage: "Success",
+      statusmessage: "Sucesso",
       data: expenses
     })
 
   } catch (err: any) {
     return res.status(500).json({
-      statusmessage: "Error when trying to return expenses with this date",
+      statusmessage: "Erro ao buscar despesas com essa data",
       data: {
         error: err.message
       }

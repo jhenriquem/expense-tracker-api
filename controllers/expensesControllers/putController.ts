@@ -16,7 +16,7 @@ export default async function putController(req: Request, res: Response) {
 
     if (!isValid) {
       return res.status(400).json({
-        statusMessage: "Invalid or non-existent data",
+        statusMessage: "Dados invalidos ou inexistentes",
       })
     }
 
@@ -32,11 +32,11 @@ export default async function putController(req: Request, res: Response) {
     expenseBase?.save()
 
     return res.status(200).json({
-      statusMessage: "Success updating an expense",
+      statusMessage: "Despesa atualizada",
     })
   } catch (err: any) {
     return res.status(500).json({
-      statusMessage: "Error when trying to update an expense",
+      statusMessage: "Erro ao atualizar a despesa",
       data: {
         errorMessage: err.message,
       }

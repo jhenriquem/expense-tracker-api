@@ -7,7 +7,7 @@ export default async function deleteController(req: Request, res: Response) {
 
     if (!_id || _id === "") {
       return res.status(400).json({
-        statusMessage: "Invalid or non-existent data",
+        statusMessage: "Dados invalidos ou inexistentes",
       })
     }
 
@@ -16,12 +16,12 @@ export default async function deleteController(req: Request, res: Response) {
     expensesBase?.save()
 
     return res.status(200).json({
-      statusMessage: "Success in deleting an expense",
+      statusMessage: "Despesa excluida",
     })
 
   } catch (err: any) {
     return res.status(500).json({
-      statusMessage: "Error when trying to delete an expense",
+      statusMessage: "Erro ao excluir a despesa",
       data: {
         errorMessage: err.message,
       }

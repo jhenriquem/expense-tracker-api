@@ -10,7 +10,7 @@ export default async function authController(req: Request, res: Response) {
 
     if (!Exist) {
       return res.status(400).json({
-        statusMessage: "Non-existent data"
+        statusMessage: "Dados inexistentes"
       })
     }
     const user = await userModel.findOne({ "credentials.email": email })
@@ -19,7 +19,7 @@ export default async function authController(req: Request, res: Response) {
 
     if (!user || !isMatch) {
       return res.status(401).json({
-        statusMessage: "Unauthenticated"
+        statusMessage: "Não autenticado"
       });
     }
 
@@ -28,13 +28,13 @@ export default async function authController(req: Request, res: Response) {
       process.env.SECRET_KEY_JWT as string);
 
     return res.status(200).json({
-      statusMessage: "Authenticated",
+      statusMessage: "Autenticado",
       token: token
     })
 
   } catch (err: any) {
     return res.status(500).json({
-      statusMessage: "Error when trying to authenticate a user",
+      statusMessage: "Erro ao autenticar o usuário",
       data: {
         errorMessage: err.message,
       }

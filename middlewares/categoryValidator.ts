@@ -15,14 +15,14 @@ export default async function categoryValidator(req: Request, res: Response, nex
 
     if (!Exist || !isValid) {
       return res.status(400).json({
-        statusMessage: "Non-existent category"
+        statusMessage: "Categoria não correspondente com a base de dados do usuário"
       })
     }
     next()
   }
   catch (err: any) {
     return res.status(500).json({
-      statusMessage: "Error in the middleware responsible for checking if the category is valid",
+      statusMessage: "Erro ao validar a categoria",
       data: {
         errorMessage: err.message,
       }

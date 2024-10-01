@@ -35,7 +35,7 @@ Todos os endpoints exigem um cabeçalho de autorização com a chave da API, com
 
 ```json
 {
-    "statusMessage": "Unauthorized"
+    "statusMessage": "Não autorizado"
 }
 ```
 

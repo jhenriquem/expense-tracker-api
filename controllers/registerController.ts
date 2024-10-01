@@ -18,7 +18,7 @@ export default async function registerController(req: Request, res: Response) {
 
     if (!Exist) {
       return res.status(400).json({
-        statusMessage: "Non-existent data"
+        statusMessage: "Dados inexistentes"
       })
     }
 
@@ -35,32 +35,32 @@ export default async function registerController(req: Request, res: Response) {
         password: passwordHash
       },
       categories: [
-        "Groceries",
-        "Leisure",
-        "Electronics",
-        "Utilities",
-        "Clothing",
-        "Health",
-        "Others"
+        "Mantimentos",
+        "Lazer",
+        "Eletrônicos",
+        "Utilitários",
+        "Vestuário",
+        "Saúde",
+        "Outros"
       ]
     }
 
     const registeredUser = new userModel(data)
     await registeredUser.save()
 
-    //Creation of the database of expenses related to this user
+    // Criação do base da dados das despesas relacionada a esse usuário
     const response = await createExpensesBase(registeredUser._id)
 
     if (response.status) {
       return res.status(201).json({
-        statusMessage: "Successful"
+        statusMessage: "Usuário cadastrado "
       })
     }
     if (!response.status) throw error(response.message);
   }
   catch (err: any) {
     return res.status(500).json({
-      statusMessage: "Error when trying to register a new user",
+      statusMessage: "Erro ao cadastrar o usuário",
       data: {
         errorMessage: err.message,
       }

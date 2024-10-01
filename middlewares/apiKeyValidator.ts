@@ -7,13 +7,13 @@ export default async function apiKeyValidator(req: Request, res: Response, next:
 
     if (Key !== process.env.API_KEY || !autheader) {
       return res.status(401).json({
-        statusMessage: "Unauthorized"
+        statusMessage: "Não autorizado"
       })
     }
     next()
   } catch (err: any) {
     return res.status(500).json({
-      statusMessage: "Error in the middleware responsible for validating the api key",
+      statusMessage: "Erro ao validar a requisição",
       data: {
         errorMessage: err.message
       }

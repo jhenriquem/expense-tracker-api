@@ -7,11 +7,8 @@ import categoryValidator from "../../middlewares/categoryValidator";
 
 const expensesRoute = Router()
 
-// Route responsible for returning all expenses
 expensesRoute.get("/", async (req, res) => {
   try {
-
-
     const id = req.body.userId
     const response = await expensesBaseModel.findOne({ _id: id })
     return res.status(200).json({
@@ -28,13 +25,10 @@ expensesRoute.get("/", async (req, res) => {
   }
 })
 
-// Route responsible for adding a new expense
 expensesRoute.post("/", categoryValidator, postController)
 
-// Route responsible for updating an expense
 expensesRoute.put("/", putController)
 
-// Route responsible for deleting an expense
 expensesRoute.delete("/", deleteController)
 
 export default expensesRoute

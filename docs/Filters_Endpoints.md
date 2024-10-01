@@ -9,14 +9,6 @@ Requer dois parâmetros :
 - `start` : date inicial, exemplo : 2024-08-23
 - `end` : date final, exemplo : 2024-09-10
 
-Exemplo de resposta : 
-```json
-{
-    "statusMessage" : "Success",
-    "data" : []
-}
-
-```
 
 ### GET /time/month/:month
 Retornar despesas criadas em um mês
@@ -24,14 +16,6 @@ Retornar despesas criadas em um mês
 Requer um parâmetros : 
 - `month` : número do mês, exemplo : 08
 
-Exemplo de resposta : 
-```json
-{
-    "statusMessage" : "Success",
-    "data" : []
-}
-
-```
 
 ### GET /time/year/:year
 Retornar despesas criadas em um ano
@@ -39,14 +23,6 @@ Retornar despesas criadas em um ano
 Requer um parâmetros : 
 - `year` : ano , exemplo : 2024
 
-Exemplo de resposta : 
-```json
-{
-    "statusMessage" : "Success",
-    "data" : []
-}
-
-```
 
 ##  🔖 Filtragem por categoria
 ### GET /category/:categoryName
@@ -55,10 +31,13 @@ Retornar despesas relacionadas a uma determinada categoria
 Requer um parâmetros : 
 - `categoryName` : nome da categoria , exemplo : Electronics
 
-Exemplo de resposta : 
+
+
+Todas as rotas retornaram a mesma interface de resposta
+Exemplo: 
 ```json
 {
-    "statusMessage" : "Success",
+    "statusMessage" : "Sucesso",
     "data" : []
 }
 

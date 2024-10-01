@@ -17,12 +17,13 @@ export default async function postController(req: Request, res: Response) {
 
     if (!isValid) {
       return res.status(400).json({
-        statusMessage: "Invalid or non-existent data",
+        statusMessage: "Dados invalidos ou inexistentes",
       })
     }
 
     const dateOfCreation = new Date()
-    //Time Zone Correction
+
+    // Correção de fuso horário
     dateOfCreation.setMinutes(dateOfCreation.getMinutes() - dateOfCreation.getTimezoneOffset())
 
     const data: expensesI = {
@@ -38,13 +39,13 @@ export default async function postController(req: Request, res: Response) {
     expensesBase?.save()
 
     return res.status(201).json({
-      statusMessage: "Success adding a new expense",
+      statusMessage: "Despesa adicionada",
       data: expensesBase?.expenses.at(-1)
     })
 
   } catch (err: any) {
     return res.status(500).json({
-      statusMessage: "Error when trying to adding a new expense",
+      statusMessage: "Erro ao adicionar a despesa",
       data: {
         errorMessage: err.message,
       }

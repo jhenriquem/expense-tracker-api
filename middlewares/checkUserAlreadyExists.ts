@@ -11,13 +11,13 @@ export default async function checkUserAlreadyExists(req: Request, res: Response
 
     if (!isValid || alreadyExists) {
       return res.status(404).json({
-        statusMessage: "The user already exists"
+        statusMessage: "Esse usuário já existe"
       })
     }
     next()
   } catch (err: any) {
     return res.status(500).json({
-      statusMessage: "Error in the middleware that checks if the user already exists",
+      statusMessage: "Erro ao verificar se o usuário já existe",
       data: {
         errorMessage: err.message,
       }

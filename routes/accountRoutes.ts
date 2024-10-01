@@ -24,10 +24,9 @@ accountRoute.get("/", async (req, res) => {
     })
   }
 })
-// Responsible for times related filters
+
 accountRoute.use("/filters/time", timeRoute)
 
-// Responsible for returning all expenses corresponding to a category
 accountRoute.use("/filters/category/:categoryName", async (req, res) => {
   try {
     const categoryName = req.params.categoryName
@@ -49,10 +48,8 @@ accountRoute.use("/filters/category/:categoryName", async (req, res) => {
   }
 })
 
-// Responsible for adding and returning the expenses
 accountRoute.use("/expenses", expensesRoute)
 
-// Responsible for adding and returning the categorys
 accountRoute.use("/categories", categoryRoute)
 
 export default accountRoute

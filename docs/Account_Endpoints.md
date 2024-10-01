@@ -8,7 +8,7 @@ Retornar as informações do usuário
 Exemplo de resposta:
 ```json
 {
-    "statusMessage": "Success",
+    "statusMessage": "Sucesso",
     "data" : {
         "username" : "",
         "lastname" : "",
@@ -29,7 +29,7 @@ Exemplo de resposta :
 
 ```json
 {
-    "statusMessage" : "Success"
+    "statusMessage" : "Sucesso"
 }
 
 ```
@@ -38,11 +38,11 @@ Exemplo de resposta :
 
 ```json
 {
-    "statusMessage" : "Non-existent user token"
+    "statusMessage" : "Token de usuário inexistente"
 }
 ```
 ```json
 {
-    "statusMessage" : " Error converting token"
+    "statusMessage" : "Erro na conversão ou token inválido"
 }
 ```
