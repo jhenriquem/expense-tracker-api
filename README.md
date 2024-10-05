@@ -45,3 +45,20 @@ Todas as rotas começão com /api/users/ , sua documentação é divida em 4 par
 - [ 👤 Endpoints relacionados a um usuário ](./docs/Account_Endpoints.md)
 - [ 💲 Endpoints relacionados as despesas do usuário  ](./docs/Expenses_Endpoints.md)
 - [ ⌛ 🔖 Endpoints relacionados aos filtros das despesas ](./docs/Filters_Endpoints.md)
+
+### Instalação 
+
+-   Clone o repositório e acesseo 
+```bash
+git clone https://github.com/jhenriquem/expense-tracker-api/
+cd expense-tracker-api
+```
+-  Instale todas as dependências
+```bash
+npm install 
+```
+
+-  Execute a API
+```bash
+npm run dev 
+```
