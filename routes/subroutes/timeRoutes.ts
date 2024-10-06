@@ -50,12 +50,10 @@ timeRoute.get("/month/:month", async (req, res) => {
 timeRoute.get("/year/:year", async (req, res) => {
   try {
     const { userId } = req.body
-    const year = new Date(req.params.year).getFullYear()
-
+    const year = req.params.year
 
     const expensesBase = await expensesBaseModel.findById(userId)
-    console.log(year)
-    const expenses = expensesBase?.expenses.filter(expense => expense.date.getFullYear() === year)
+    const expenses = expensesBase?.expenses.filter(expense => `${expense.date.getFullYear()}` === year)
     return res.status(200).json({
       statusmessage: "Sucesso",
       data: expenses
